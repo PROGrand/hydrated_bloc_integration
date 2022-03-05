@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  hydrated_bloc:
+  hydrated_bloc_integration:
     path: ../
   flutter_bloc: ^8.0.1
 
