@@ -3,7 +3,3 @@
 ```
 flutter drive --dart-define=hydrated_bloc.off=true ...
 ```
-
-## Maintainers
-
-- [Felix Angelov](https://github.com/felangel)
