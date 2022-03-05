@@ -6,7 +6,7 @@ import 'package:meta/meta.dart';
 const _asyncRunZoned = runZoned;
 
 /// Turns off hydrated.
-const bool _kTestingMode = bool.fromEnvironment('hydrated_bloc.testing');
+const bool _kOffMode = bool.fromEnvironment('hydrated_bloc.off');
 
 /// This class extends [BlocOverrides] and facilitates overriding
 /// [Storage] in addition to [BlocObserver] and [EventTransformer].
@@ -200,7 +200,7 @@ mixin HydratedMixin<State> on BlocBase<State> {
   /// }
   /// ```
   void hydrate() {
-    if (_kTestingMode)
+    if (_kOffMode)
       return;
 
     try {
@@ -218,7 +218,7 @@ mixin HydratedMixin<State> on BlocBase<State> {
 
   @override
   State get state {
-    if (_kTestingMode) {
+    if (_kOffMode) {
       return super.state;
     }
 
@@ -247,7 +247,7 @@ mixin HydratedMixin<State> on BlocBase<State> {
   void onChange(Change<State> change) {
     super.onChange(change);
 
-    if (_kTestingMode) {
+    if (_kOffMode) {
       return;
     }
 
