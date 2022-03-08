@@ -5,8 +5,13 @@ import 'package:meta/meta.dart';
 
 const _asyncRunZoned = runZoned;
 
-/// Turns off hydrated.
-const bool _kOffMode = bool.fromEnvironment('hydrated_bloc.off');
+class HydratedBlocConfig {
+  static bool _OffMode = bool.fromEnvironment('hydrated_bloc.off');
+
+  static bool get OffMode => _OffMode;
+
+  static void set OffMode(bool off) => _OffMode = off;
+}
 
 /// This class extends [BlocOverrides] and facilitates overriding
 /// [Storage] in addition to [BlocObserver] and [EventTransformer].
@@ -200,8 +205,7 @@ mixin HydratedMixin<State> on BlocBase<State> {
   /// }
   /// ```
   void hydrate() {
-    if (_kOffMode)
-      return;
+    if (HydratedBlocConfig.OffMode) return;
 
     try {
       final stateJson = _toJson(state);
@@ -218,7 +222,7 @@ mixin HydratedMixin<State> on BlocBase<State> {
 
   @override
   State get state {
-    if (_kOffMode) {
+    if (HydratedBlocConfig.OffMode) {
       return super.state;
     }
 
@@ -247,7 +251,7 @@ mixin HydratedMixin<State> on BlocBase<State> {
   void onChange(Change<State> change) {
     super.onChange(change);
 
-    if (_kOffMode) {
+    if (HydratedBlocConfig.OffMode) {
       return;
     }
 
@@ -506,8 +510,10 @@ enum _Outcome { atomic, complex }
 
 class _Traversed {
   _Traversed._({required this.outcome, required this.value});
+
   _Traversed.atomic(dynamic value)
       : this._(outcome: _Outcome.atomic, value: value);
+
   _Traversed.complex(dynamic value)
       : this._(outcome: _Outcome.complex, value: value);
   final _Outcome outcome;

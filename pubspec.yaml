@@ -1,6 +1,6 @@
 name: hydrated_bloc_integration
 description: An extension to the bloc state management library which automatically persists and restores bloc states. Supports integration testing.
-version: 0.0.1-rc3
+version: 0.0.1-rc4
 repository: https://github.com/PROGrand/hydrated_bloc_integration
 issue_tracker: https://github.com/PROGrand/hydrated_bloc_integration/issues
 
