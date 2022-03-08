@@ -5,12 +5,11 @@ import 'package:meta/meta.dart';
 
 const _asyncRunZoned = runZoned;
 
+const _kOffMode = bool.fromEnvironment('hydrated_bloc.off');
+
 class HydratedBlocConfig {
-  static bool _OffMode = bool.fromEnvironment('hydrated_bloc.off');
-
-  static bool get OffMode => _OffMode;
-
-  static void set OffMode(bool off) => _OffMode = off;
+  /// Turn off hydration everywhere.
+  static bool offMode = _kOffMode;
 }
 
 /// This class extends [BlocOverrides] and facilitates overriding
@@ -205,7 +204,7 @@ mixin HydratedMixin<State> on BlocBase<State> {
   /// }
   /// ```
   void hydrate() {
-    if (HydratedBlocConfig.OffMode) return;
+    if (HydratedBlocConfig.offMode) return;
 
     try {
       final stateJson = _toJson(state);
@@ -222,7 +221,7 @@ mixin HydratedMixin<State> on BlocBase<State> {
 
   @override
   State get state {
-    if (HydratedBlocConfig.OffMode) {
+    if (HydratedBlocConfig.offMode) {
       return super.state;
     }
 
@@ -251,7 +250,7 @@ mixin HydratedMixin<State> on BlocBase<State> {
   void onChange(Change<State> change) {
     super.onChange(change);
 
-    if (HydratedBlocConfig.OffMode) {
+    if (HydratedBlocConfig.offMode) {
       return;
     }
 

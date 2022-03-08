@@ -3,3 +3,7 @@
 ```
 flutter drive --dart-define=hydrated_bloc.off=true ...
 ```
+or
+```
+HydratedBlocConfig.offMode = true;
+```
