@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:hydrated_bloc_integration/hydrated_bloc.dart';
+import 'package:hydrated_bloc_integration/hydrated_bloc_integration.dart';
 import 'package:meta/meta.dart';
 
 const _kOffMode = bool.fromEnvironment('hydrated_bloc.off');

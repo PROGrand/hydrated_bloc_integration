@@ -1,4 +1,4 @@
-import 'package:hydrated_bloc_integration/hydrated_bloc.dart';
+import 'package:hydrated_bloc_integration/hydrated_bloc_integration.dart';
 import 'package:test/test.dart';
 
 void main() {

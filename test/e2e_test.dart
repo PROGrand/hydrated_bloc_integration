@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:hydrated_bloc_integration/hydrated_bloc.dart';
+import 'package:hydrated_bloc_integration/hydrated_bloc_integration.dart';
 import 'package:hydrated_bloc_integration/src/hydrated_bloc.dart';
 import 'package:path/path.dart' as path;
 import 'package:test/test.dart';

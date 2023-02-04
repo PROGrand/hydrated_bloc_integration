@@ -1,5 +1,5 @@
 import 'package:collection/collection.dart';
-import 'package:hydrated_bloc_integration/hydrated_bloc.dart';
+import 'package:hydrated_bloc_integration/hydrated_bloc_integration.dart';
 
 class ManualCubit extends HydratedCubit<Dog?> {
   ManualCubit() : super(null);

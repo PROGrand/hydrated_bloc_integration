@@ -5,7 +5,7 @@ import 'dart:io';
 import 'package:hive/hive.dart';
 // ignore: implementation_imports
 import 'package:hive/src/hive_impl.dart';
-import 'package:hydrated_bloc_integration/hydrated_bloc.dart';
+import 'package:hydrated_bloc_integration/hydrated_bloc_integration.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:path/path.dart' as p;
 import 'package:test/test.dart';

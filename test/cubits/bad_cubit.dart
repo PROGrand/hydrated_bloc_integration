@@ -1,4 +1,4 @@
-import 'package:hydrated_bloc_integration/hydrated_bloc.dart';
+import 'package:hydrated_bloc_integration/hydrated_bloc_integration.dart';
 
 class BadCubit extends HydratedCubit<BadState?> {
   BadCubit() : super(null);

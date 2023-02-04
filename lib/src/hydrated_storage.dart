@@ -53,7 +53,7 @@ class HydratedStorage implements Storage {
   /// import 'package:flutter/foundation.dart';
   /// import 'package:flutter/material.dart';
   ///
-  /// import 'package:hydrated_bloc_integration/hydrated_bloc.dart';
+  /// import 'package:hydrated_bloc_integration/hydrated_bloc_integration.dart';
   /// import 'package:path_provider/path_provider.dart';
   ///
   /// void main() async {
@@ -74,7 +74,7 @@ class HydratedStorage implements Storage {
   /// Following snippet shows how to make default one:
   /// ```dart
   /// import 'package:crypto/crypto.dart';
-  /// import 'package:hydrated_bloc_integration/hydrated_bloc.dart';
+  /// import 'package:hydrated_bloc_integration/hydrated_bloc_integration.dart';
   ///
   /// const password = 'hydration';
   /// final byteskey = sha256.convert(utf8.encode(password)).bytes;

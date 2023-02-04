@@ -1,4 +1,4 @@
-import 'package:hydrated_bloc_integration/hydrated_bloc.dart';
+import 'package:hydrated_bloc_integration/hydrated_bloc_integration.dart';
 
 class ListCubit extends HydratedCubit<List<String>> {
   ListCubit() : super(const <String>[]);

@@ -1,4 +1,4 @@
-import 'package:hydrated_bloc_integration/hydrated_bloc.dart';
+import 'package:hydrated_bloc_integration/hydrated_bloc_integration.dart';
 
 class CyclicCubit extends HydratedCubit<Cycle1?> {
   CyclicCubit() : super(null);

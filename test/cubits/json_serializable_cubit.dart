@@ -1,5 +1,5 @@
 import 'package:collection/collection.dart';
-import 'package:hydrated_bloc_integration/hydrated_bloc.dart';
+import 'package:hydrated_bloc_integration/hydrated_bloc_integration.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'json_serializable_cubit.g.dart';
