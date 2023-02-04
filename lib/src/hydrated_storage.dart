@@ -158,7 +158,10 @@ class HydratedStorage implements Storage {
   Future<void> clear() async {
     if (_box.isOpen) {
       _instance = null;
-      return _lock.synchronized(_box.clear);
+      return _lock.synchronized(() async {
+        await _box.clear();
+        await _box.close();
+      });
     }
   }
 }

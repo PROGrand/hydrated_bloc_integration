@@ -13,26 +13,24 @@ import 'package:test/test.dart';
 class MockBox extends Mock implements Box<dynamic> {}
 
 void main() {
-  group('DefaultStorage', () {
-    test('throws NoSuchMethodError', () {
-      HydratedBlocOverrides.runZoned(() {
-        final overrides = HydratedBlocOverrides.current!;
-        expect(() => overrides.storage.read(''), throwsNoSuchMethodError);
-      });
-    });
-  });
-
   group('HydratedStorage', () {
-    final cwd = Directory.current.absolute.path;
+    final cwd = p.join(Directory.current.path, '.cache');
+
     final storageDirectory = Directory(cwd);
 
     late Storage storage;
 
+    setUp(() async {
+      await Directory(cwd).create(recursive: true);
+    });
+
     tearDown(() async {
       await storage.clear();
-      try {
-        await HydratedStorage.hive.deleteFromDisk();
-      } catch (_) {}
+      await HydratedStorage.hive.deleteFromDisk();
+
+      Directory(
+        p.join(Directory.current.path, '.cache'),
+      ).deleteSync(recursive: true);
     });
 
     group('migration', () {
@@ -50,8 +48,9 @@ void main() {
 
     group('build', () {
       setUp(() async {
-        await (await HydratedStorage.build(storageDirectory: storageDirectory))
-            .clear();
+        final hydratedStorage =
+            await HydratedStorage.build(storageDirectory: storageDirectory);
+        await hydratedStorage.clear();
       });
 
       test('reuses existing instance when called multiple times', () async {
@@ -98,6 +97,7 @@ void main() {
       setUp(() {
         box = MockBox();
         when(() => box.clear()).thenAnswer((_) async => 0);
+        when(() => box.close()).thenAnswer((_) async => 0);
         storage = HydratedStorage(box);
       });
 

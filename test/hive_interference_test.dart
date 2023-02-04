@@ -13,9 +13,19 @@ void main() {
       (Hive as HiveImpl).homePath = null;
     });
 
-    test('odd singleton interference', () async {
-      final cwd = Directory.current.absolute.path;
+    final cwd = p.join(Directory.current.path, '.cache');
 
+    setUp(() async {
+      await Directory(cwd).create(recursive: true);
+    });
+
+    tearDown(() async {
+      Directory(
+        p.join(Directory.current.path, '.cache'),
+      ).deleteSync(recursive: true);
+    });
+
+    test('odd singleton interference', () async {
       var impl1 = HiveImpl()..init(cwd);
       var box1 = await impl1.openBox<dynamic>('impl1');
 
@@ -32,6 +42,7 @@ void main() {
 
       Hive.init(cwd);
       await box1.deleteFromDisk();
+      await box2.close();
       await Hive.deleteBoxFromDisk('impl2');
     });
 

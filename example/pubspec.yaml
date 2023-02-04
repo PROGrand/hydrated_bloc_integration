@@ -10,9 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
   hydrated_bloc_integration:
-    path: ../
-  flutter_bloc: ^8.0.1
-
+    path: ..
+  flutter_bloc: ^8.1.1
   path_provider: ^2.0.1
 
 flutter:
